@@ -1,0 +1,36 @@
+#include <iostream>
+#include <conio.h>
+#include <iomanip>
+using namespace std;
+int main(){
+//deklarasi array dengan 7 elemen
+int A[10];
+int j,k,i,temp,jmax;
+int u=9;
+
+//memasukkan nilai sebelum diurutkan
+cout<<"Masukkan nilai pada elemen array :"<<endl;
+for(i=0;i<10;i++)
+{
+cout<<"A["<<i<<"]=";
+cin>>A[i];
+}
+//Proses pengurutan secara menaik (Ascending)
+for(j=0;j<10;j++)
+{
+jmax=0;
+for(k=1;k<=u;k++)
+if (A[k] > A[jmax])
+jmax=k;
+temp=A[u];
+A[u]=A[jmax];
+A[jmax]=temp;
+u--;
+}
+//menampilkan nilai setelah diurutkan
+cout<<"\nNilai setelah diurutkan:"<<endl;
+for(i=0;i<10;i++)
+cout<<A[i]<<"  ";
+getch();
+
+}
