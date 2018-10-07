@@ -1,0 +1,201 @@
+#include<iostream>
+#include<stdlib.h>
+#include<conio.h>
+using namespace std;
+int data[100],data2[100];
+int n;
+
+void tukar(int a,int b)
+{
+ 	 int t;
+ 	 t = data[b];
+ 	 data[b]=data[a];
+ 	 data[a]=t;
+}
+
+void bubble_sort()
+{
+	for(int i=1;i<n;i++)
+	{
+		for(int j=n-1;j>=i;j--)
+		{
+		    if(data[j]<data[j-1])tukar(j,j-1);
+		}
+	}
+	cout<<"bubble sort!"<<endl;
+}
+
+void exchange_sort()
+{
+	for(int i=0; i<n-1; i++)
+	{
+		for(int j = (i+1); j<n; j++)
+		{
+			if(data [i] > data[j]) tukar(i,j);
+		}
+	}
+	cout<<"exchange sort!"<<endl;
+}
+
+void selection_sort()
+{
+	int i,j,k;
+	for(i=0;k<n-1;k++)
+	{
+	int pos = k;
+		for(j=k+1;j<n;j++)
+		{
+			for(i=0;i<n;i++){
+//				cout<<data[i];
+			}
+//			cout<<"tpost:"<<pos;
+			if(data[pos]>data[j]) pos = j;
+		}
+		cout<<"\n";
+	if(k !=pos){
+		int tampung = data[k];
+		data[k]=data[pos];
+		data[pos]=tampung;
+	}
+	
+	}
+	cout<<"selection sort!"<<endl;
+}
+
+void insertion_sort()
+{
+	int temp,i,j;
+	for(i=1;i<n;i++)
+	{
+		temp = data[i];
+		j = i-1;
+		while(data[j]>temp && j>=0)
+		{
+  		    data[j+1]=data[j];
+  		    j--;
+		}
+		data[j+1] = temp;
+	}
+	cout<<"insertion sort!"<<endl;
+}
+
+void tampilkan_larik(int data[], int n)
+{
+ int i;
+ for (i=1;i<=n;i++)
+ cout<<data[i]<<" ";
+ cout<<"\n";
+}
+int partisi (int data[], int awal, int akhir)
+{
+ int x,i,j,simpan;
+
+ i=awal;
+ j=akhir;
+
+   while(1)
+   {
+   while(data[i]<data[awal])
+   i=i+1;
+
+    while(data[j]>data[awal])
+     j=j-1;
+
+    if (i<j)
+    {
+    //tukarkan data
+   simpan=data[i];
+    data[i]=data[j];
+   data[j]=simpan;
+    }
+   else
+      return j;
+   }
+}
+void quick_sort(int data[], int awal, int akhir)
+{
+ int q;
+ if(awal<akhir)
+ {
+  q=partisi(data,awal,akhir);
+  quick_sort(data,awal,q);
+  quick_sort(data, q+1,akhir);
+ }
+}
+void Quicksort()
+{
+
+ int i,j;
+ quick_sort(data,0,n);
+ cout<<endl;
+ cout<<endl;
+ 	cout<<"quick sort !"<<endl;
+ cout<<"Data:\n";
+ tampilkan_larik(data,n);
+ getch();
+
+}
+
+void Input()
+{
+	cout<<"Masukkan jumlah data = "; cin>>n;
+	for(int i=0;i<n;i++)
+	{
+		cout<<"Masukkan data ke-"<<(i+1)<<" = ";cin>>data[i];
+		data2[i] = data[i];
+	}
+}
+
+void Tampil()
+{
+	cout<<"Data : "<<endl;
+	for(int i=0;i<n;i++)
+	{
+		cout<<data[i]<<" ";
+	}
+	cout<<endl;
+}
+
+void AcakLagi()
+{
+	for(int i=0;i<n;i++)
+	{
+		data[i] = data2[i];
+	}
+	cout<<"Data sudah teracak!"<<endl;
+}
+
+int main()
+{
+int pil;
+system("cls");
+     do
+     {
+	 system("cls");
+	 system("Program Sorting");
+	 cout<<"Menu Sorting"<<endl;
+	 cout<<"===================="<<endl;
+	 cout<<"1.	Input Data"<<endl;
+	 cout<<"2.	Bubble sort"<<endl;
+	 cout<<"3.	Exchange sort"<<endl;
+	 cout<<"4.	Selection sort"<<endl;
+	 cout<<"5.	Insertion sort"<<endl;
+	 cout<<"6.	Quick Sort"<<endl;
+	 cout<<"7.	Tampilkan Data"<<endl;
+	 cout<<"8.	Acak Data"<<endl;
+	 cout<<"	Pilihan Anda = ";cin>>pil;
+	 switch(pil)
+	 {
+	 	case 1:Input();break;
+	 	case 2:bubble_sort();break;
+	 	case 3:exchange_sort();break;
+	 	case 4:selection_sort();break;
+	 	case 5:insertion_sort();break;
+	 	case 6:Quicksort();break;
+	 	case 7:Tampil();break;
+	 	case 8:AcakLagi();break;
+	 }
+	 getch();
+	 }
+	 while(pil!=9);
+}
