@@ -1,0 +1,53 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main(int argc, char *argv[]) {
+ int i,j,k;
+ cout <<"masukan jumlah mapel:";cin>>k;
+ int data[k][3],temp[i];
+ float nr[i],ns[i],na[i],akhir;
+ char mapel[100][k],hasil[100]="";
+ cout<<"-------------------------\n\n";
+ for (i=0;i<k;i++){ 
+ cout <<"masukan mapel:";cin>>mapel[i];
+	 for(j=0;j<5;j++){
+	 	if(j==3){
+	 		cout<<mapel[i]<<" US =";
+	 		cin>>data[i][j];
+		 }else if(j==4){
+		 	cout<<mapel[i]<<" UN = ";
+			 cin>>data[i][j];	
+		 }else{
+		 	cout<<mapel[i]<<" semester "<<j+3<<" = ";
+			cin>>data[i][j];
+	 		temp[i] = data[i][j] +temp[i];	
+		 }
+	 
+	 }
+	 nr[i] = temp[i]/k;
+	 ns[i] = (nr[i]*0.7)+(data[i][3]);
+	 na[i] = (ns[i]*0.4)+(data[i][4]*0.6);
+	 akhir = na[i]+akhir;
+	 
+ }
+ cout<<"==================================================================================================\n";
+ cout<<"||    ||                ||________________NILAI SEKOLAH___________||     ||NILAI|| BATAS ||     ||\n";
+ cout<<"|| NO || MATA PELAJARAN ||__________RAPORT___________||NILAI||    ||NILAI||AKHIR||MINIMAL|| KET ||\n";
+ cout<<"||    ||                ||______SEMESTER_____||      ||  US || NS ||  UN ||(NA) ||   NA  ||     ||\n";
+ cout<<"||____||________________||__3__||__4__||__5__||__NR__||_____||____||_____||_____||_______||_____||\n";
+ for (i=0;i<k;i++){
+ cout<<"|| "<<i<<"  ||    "<<mapel[i]<<"    ||  "<<data[i][0]<<"  ||"  <<data[i][1]<<"  ||  "<<data[i][2]<<"  ||  "<<nr[i]<<"  ||  "<<data[i][3]<<  "||  "<<ns[i]<<"  ||  "<<data[i][4]<<"  ||  "<<na[i]<<"  ||>=4.0||   ";
+if((akhir>=5.5)&&(na[i]>=4)){
+  	cout<<"LULUS||\n";
+  }else{
+  	cout<<"TIDAK LULUS||\n";
+  }
+ }
+ cout<<"\n\n\n\n\n\n\n\n\n\n";
+ cout<<"++============================||\n";
+ cout<<"||Nama : UNGGUL BUDI S        ||\n";
+ cout<<"||email: 31pinggo@gmail.com   ||\n";
+ cout<<"||============================++\n";
+ 
+ return 0;
+}
