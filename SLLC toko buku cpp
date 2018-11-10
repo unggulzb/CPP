@@ -55,6 +55,7 @@ void pilih()
     else if(pil==4)
     	edit();   
     else
+//    jika input 5 maka end while
     	cout<<"selesai";
 }
 
