@@ -1,0 +1,162 @@
+ #include <iostream>
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+using namespace std;
+
+int pil;
+void pilih();
+void buat_baru();
+void tambah_belakang();
+void hapus_belakang();
+void edit();
+void tampil();
+
+
+struct toko_bk
+{
+  char kd_buku[8], nama [20];
+    int harga;
+  struct toko_bk *next;
+} tk_buku, *baru, *awal=NULL, *akhir=NULL,*hapus,*bantu;
+
+
+int main()
+{
+  do
+  {
+    system("cls");
+    cout<<"================================="<<endl;
+    cout<<"   TOKO BUKU PINGGO   "<<endl;
+    cout<<"================================="<<endl;
+    cout<<"1. Tambah Belakang"<<endl;
+    cout<<"2. Hapus Belakang"<<endl;
+    cout<<"3. Tampilkan"<<endl;
+    cout<<"4. Edit Harga"<<endl;
+    cout<<"5. Selesai"<<endl;
+    cout<<"=================================="<<endl;
+    cout<<"             PINGGO           "<<endl;
+    cout<<"=================================="<<endl;
+    cout<<"Masukan Pilihan Anda : ";
+    cin>>pil;
+    pilih();
+  } while(pil!=5);
+  return 0;
+}
+
+void pilih()
+{
+    if(pil==1)
+        tambah_belakang();
+    else if(pil==2)
+    	hapus_belakang();
+    else if(pil==3)
+        tampil();
+    else if(pil==4)
+    	edit();   
+    else
+//    jika input 5 maka end while
+    	cout<<"selesai";
+}
+
+void buat_baru()
+{
+  baru=(toko_bk*)malloc(sizeof(struct toko_bk));
+    cout<<"input kd-buku   : ";cin>>baru->kd_buku;
+  cout<<"input nama  : ";cin>>baru->nama;
+    cout<<"input harga  : ";cin>>baru->harga;
+    baru->next=NULL;
+}
+
+void tambah_belakang()
+{
+    buat_baru();
+  if(awal==NULL)
+    {
+    awal=baru;
+    }
+    else
+  {
+        akhir->next=baru;
+  }
+    akhir=baru;
+    akhir->next=NULL;
+  cout<<endl<<endl;
+    tampil();
+}
+
+
+
+void hapus_belakang()
+{
+    if (awal==NULL)
+    cout<<"Kosong";
+    else if(awal==akhir)
+    {
+   hapus=awal;
+         awal=awal->next;
+         free(hapus);
+  }
+    else
+    {
+    hapus=awal;
+    while(hapus->next!=akhir)
+     hapus=hapus->next;
+        akhir=hapus;
+    hapus=akhir->next;
+        akhir->next=NULL;
+    free(hapus);
+    }
+  cout<<endl<<endl;
+    tampil();
+}
+void edit(){
+	string cari,cek,t_nm[8],t_kd[8],t_hg[8];
+	int flag=0;
+	bantu=awal;
+	cout<<"Masukan Kode Buku: ";
+	cin>>cari;
+	   while(bantu!=NULL)
+	   {
+	   	cek = bantu->kd_buku;
+	   	if(cek == cari){
+	   		flag=1;
+	   		cout<<"Data ditemukan!\n";
+	   		cout<<"kd-buku	: "<<bantu->kd_buku;
+	    	cout<<"nama		: "<<bantu->nama;
+	    	cout<<"harga	: "<<bantu->harga<<endl;
+	    	cout<<"Masukan Harga Baru : ";cin>>bantu->harga;
+	    	cout<<"Harga Sudah diubah!!\n";
+	    	cout<<"================================="<<endl;
+	    	cout<<"			DATA SEKARANG			\n";
+	    	cout<<"================================="<<endl;
+	   		bantu=NULL;
+		   }else{
+		   	bantu=bantu->next;
+		   }
+	   }
+	   if(flag==0){
+	   		cout<<"Data Tidak Ada!\n";
+	   		cout<<"================================="<<endl;
+	    	cout<<"			DATA YANG ADA			\n";
+	    	cout<<"================================="<<endl;
+	   }
+	   		tampil();
+}
+void tampil()
+{
+   if (awal==NULL)
+    cout<<"Kosong";
+   else
+   {
+   bantu=awal;
+   while(bantu!=NULL)
+   {
+    cout<<"kd-buku : "<<bantu->kd_buku;
+    cout<<"  nama : "<<bantu->nama;
+    cout<<"  harga : "<<bantu->harga<<endl;
+    bantu=bantu->next;
+   }
+   }
+   getch();
+}
