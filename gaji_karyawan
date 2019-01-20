@@ -1,0 +1,153 @@
+#include<iostream>
+#include<iomanip>
+#include<cstdlib>
+#include<conio.h>
+#include<stdio.h>
+using namespace std;
+//deklarasi struct dengan nama karyawan
+
+struct kj{
+  char nama[30],nip[5],jumlah[5];
+  string status;
+ int kj;
+}karyawan[100];
+
+int main()
+{
+cout<<"\n-------------------------------------------------------------------------------\n";
+cout<<"| Kode   |\tNama Jabatan   |\tGaji Pokok   |\tStatus\t | Tunjangan  |";
+cout<<"\n|Jabatan |\t\t       |                     |           |            | ";
+cout<<"\n-------------------------------------------------------------------------------\n";
+cout<<"|1       |\tAdministrasi   |\t900000\t     | Menikah\t |   200000   |";
+cout<<"\n|        |                     |                     | Single    |   100000   |";
+cout<<"\n-------------------------------------------------------------------------------";
+cout<<"\n| 2      |\tOperasional    |\t950000\t     | Menikah\t |   250000   |\n";
+cout<<"|        |                     |                     | Single    |   150000   |";
+cout<<"\n-------------------------------------------------------------------------------\n";
+cout<<endl;
+cout<<endl;
+
+	int y;
+	cout<<"Masukan Jumlah Karyawan:";cin>>y;
+		for(int i=1;i<=y;i++)
+			{
+				cout<<"Masukan Karyawan Ke-"<<i<<"\n"<<"Tekan Enter Untuk Lanjut!\n";
+  				cin.getline(karyawan[i].jumlah,80.);
+  				cout<<"\nNIP           "<<"\t\t: ";cin.getline(karyawan[i].nip,80.);
+				cout<<"Nama Karyawan "<<"\t\t: ";cin.getline(karyawan[i].nama,80.);
+				cout<<"Kode Jabatan(1/2)"<<"\t\t: ";cin>>karyawan[i].kj;
+				cout<<"Status(M/S)      "<<"\t\t: ";cin>>karyawan[i].status;
+				cin.ignore(80,'\n');
+				cout<<endl;
+			}
+			
+cout<<"\n";
+	for(int z=0; z<130; z++){
+		cout<<"=";
+	}
+cout<<"\n";	
+cout<<"\t\t* PROGRAM HITUNG GAJI KARYAWAN PT.XYZ *\n";
+cout<<"\n";
+		for(int z=0; z<130; z++){
+			cout<<"=";
+		}
+cout<<"\n";
+				cout<<"\nData Karyawan : \n\n";
+				cout.flags(ios::left);
+				cout.flags(ios::left);
+				cout<<"\n";
+				for(int z=0; z<130; z++){
+					cout<<"-";
+				}
+				cout<<"\n";
+				cout<<setiosflags(ios::left)<<setw(8)<<"No";
+				cout<<setiosflags(ios::left)<<setw(16)<<"NIP";
+				cout<<setiosflags(ios::left)<<setw(16)<<"Nama";
+				cout<<setiosflags(ios::left)<<setw(16)<<"Kode";
+				cout<<setiosflags(ios::left)<<setw(16)<<"Jabatan";
+				cout<<setiosflags(ios::left)<<setw(12)<<"Status";
+				cout<<setiosflags(ios::left)<<setw(12)<<"Tunjangan";
+				cout<<setiosflags(ios::left)<<setw(12)<<"Gaji";
+				cout<<setiosflags(ios::left)<<setw(12)<<"Total";
+				
+				cout<<setiosflags(ios::left)<<setw(8)<<"\n ";
+				cout<<setiosflags(ios::left)<<setw(16)<<"   ";
+				cout<<setiosflags(ios::left)<<setw(16)<<"Karyawan";
+				cout<<setiosflags(ios::left)<<setw(16)<<"Jabatan";
+				cout<<setiosflags(ios::left)<<setw(16)<<"       ";
+				cout<<setiosflags(ios::left)<<setw(12)<<"      ";
+				cout<<setiosflags(ios::left)<<setw(12)<<"         ";
+				cout<<setiosflags(ios::left)<<setw(12)<<"Pokok";
+				cout<<setiosflags(ios::left)<<setw(12)<<"     \n";
+				
+				for(int i=1;i<=y;i++)
+			{
+				
+				int gapok,tunjangan,total;
+				string jabatan,hubungan;
+				
+				cout<<"\n";
+				for(int z=0; z<130; z++){
+					cout<<"-";
+				}
+				cout<<"\n";
+//=================================	
+					if(karyawan[i].kj == 1){
+					jabatan = "Administrasi";
+					if(karyawan[i].status =="M"){
+					hubungan = "MENIKAH";
+					tunjangan = 200000;
+					}else if(karyawan[i].status =="S"){
+					hubungan = "SINGLE";
+					tunjangan = 100000;
+					}
+					gapok = 900000;
+				}else if(karyawan[i].kj == 2){
+					jabatan = "Operasional";
+					if(karyawan[i].status =="M"){
+					hubungan = "MENIKAH";
+					tunjangan = 250000;
+					}else if(karyawan[i].status =="S"){
+					hubungan = "SINGLE";
+					tunjangan = 150000;
+					}
+					gapok = 950000;
+				}
+				total = gapok + tunjangan;
+//=================================	
+				cout<<setiosflags(ios::left)<<setw(8)<<i;
+				cout<<setiosflags(ios::left)<<setw(16)<<karyawan[i].nip;
+				cout<<setiosflags(ios::left)<<setw(16)<<karyawan[i].nama;
+				cout<<setiosflags(ios::left)<<setw(16)<<karyawan[i].kj;
+				cout<<setiosflags(ios::left)<<setw(16)<<jabatan;
+				cout<<setiosflags(ios::left)<<setw(12)<<hubungan;
+				cout<<setiosflags(ios::left)<<setw(12)<<gapok;
+				cout<<setiosflags(ios::left)<<setw(12)<<tunjangan;
+				cout<<setiosflags(ios::left)<<setw(12)<<total;
+//=================================	
+				cout<<endl;
+			}
+			for(int z=0; z<130; z++){
+					cout<<"-";
+				}
+				cout<<"\n";
+				cout<<endl;
+				
+//========================================
+	char nm[20]= {78,97,109,97,32,58,32,85,78,71,71,85,76,32,66,85,68,73,32,83};
+	char ni[20]= {78,73,77,32,32,58,32,50,48,49,55,48,56,48,49,51,54,48};
+	int i;
+	cout <<"\n\n\n========================================\n\t"<<"   ";
+	for(i=0;i<=20;i++)
+	{
+	 	cout<<nm[i];
+	}	
+	cout<<"\n\t"<<"   ";
+	for(i=0;i<=20;i++)
+	{
+		cout<<ni[i];
+	}
+//========================================
+getch();
+return 0;
+}
