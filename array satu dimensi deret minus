@@ -1,0 +1,17 @@
+#include<iostream>
+#include<conio.h>
+using namespace std;
+int main()
+{
+  int u[11] = {};
+  int i;
+  int a = 200;
+  int b = -5;
+  for(i=0;i<11;i++){
+    u[i] = a;
+    a = a+b;
+    b = b-5;
+    cout <<u[i]<<"\n";
+  }
+  return 0;
+}

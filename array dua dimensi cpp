@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+int main(){
+     int angka [3][2] = {{80,120},{35,20},{75,90}};
+
+     int i,j;
+     for(i=0;i<3;i++){
+          for(j=0;j<2;j++){
+               cout<<angka[i][j]<<" ";
+          }
+          cout<<endl;
+     }
+
+     return 0;
+}

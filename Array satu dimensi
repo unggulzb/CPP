@@ -1,0 +1,15 @@
+#include<iostream>
+#include <conio.h>
+using namespace std;
+int main()
+{
+  int u[11] = {};
+  int i;
+  int a =5;
+  for(i=0;i<=10;i++){
+    u[i] = a;
+    a = a+3;
+    cout <<u[i]<<"\n";
+  }
+  return 0;
+}
